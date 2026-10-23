@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Resume Upload</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    background:linear-gradient(120deg,#eef2ff,#f8fafc);
+    font-family:'Poppins',sans-serif;
+    padding:40px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#1e40af;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    margin-top:15px;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+button:hover{
+    background:#1e40af;
+}
+
+.progress{
+    margin-top:20px;
+    background:#ddd;
+    height:20px;
+    border-radius:10px;
+    overflow:hidden;
+    display:none;
+}
+
+.bar{
+    height:100%;
+    width:0%;
+    background:green;
+}
+
+/* Flash message */
+.flash{
+    text-align:center;
+    padding:10px;
+    margin-bottom:15px;
+    border-radius:6px;
+    background:#d1fae5;
+    color:#065f46;
+}
+
+/* Back button */
+.back{
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    color:#2563eb;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🔗 LinkedIn Resume Upload</h1>
+
+<div class="container">
+
+<!-- ✅ FLASH MESSAGE FROM FLASK -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form method="POST" enctype="multipart/form-data" onsubmit="showProgress()">
+
+<div class="card">
+<h2>Student Details</h2>
+
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="text" name="phone" placeholder="Phone">
+<input type="text" name="college" placeholder="College">
+<input type="text" name="degree" placeholder="Degree">
+<input type="text" name="skills" placeholder="Skills">
+
+</div>
+
+<div class="card">
+<h2>Upload Resume</h2>
+
+<input type="file" name="resume" required>
+
+<button type="submit">Upload Resume</button>
+
+<div class="progress" id="progressBox">
+    <div class="bar" id="bar"></div>
+</div>
+
+<p id="status"></p>
+
+</div>
+
+</form>
+
+<!-- ✅ BACK BUTTON -->
+<a href="{{ url_for('dashboard') }}" class="back">⬅ Back to Dashboard</a>
+
+</div>
+
+<script>
+function showProgress(){
+    let bar=document.getElementById("bar");
+    let box=document.getElementById("progressBox");
+    let status=document.getElementById("status");
+
+    box.style.display="block";
+
+    let width=0;
+
+    let interval=setInterval(()=>{
+        if(width>=100){
+            clearInterval(interval);
+            status.innerHTML="✅ Uploading to server...";
+        }else{
+            width+=10;
+            bar.style.width=width+"%";
+            status.innerHTML="Uploading... "+width+"%";
+        }
+    },150);
+}
+</script>
+
+</body>
+</html>

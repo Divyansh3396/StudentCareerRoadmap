@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI Career Predictor</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8fafc;
+color:#1e293b;
+}
+
+/* Navbar */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 80px;
+background:white;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.logo{
+font-size:24px;
+font-weight:700;
+color:#2563eb;
+}
+
+.nav-links a{
+margin-left:25px;
+text-decoration:none;
+color:#1e293b;
+font-weight:500;
+}
+
+.nav-links a:hover{
+color:#2563eb;
+}
+
+/* Hero Section */
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:80px;
+}
+
+.hero-text{
+max-width:550px;
+}
+
+.hero-text h1{
+font-size:48px;
+font-weight:700;
+color:#0f172a;
+}
+
+.hero-text p{
+margin-top:15px;
+font-size:16px;
+color:#475569;
+}
+
+.hero-buttons{
+margin-top:30px;
+}
+
+.btn{
+padding:14px 28px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+font-size:15px;
+font-weight:500;
+text-decoration:none;
+}
+
+.btn-primary{
+background:#2563eb;
+color:white;
+margin-right:15px;
+}
+
+.btn-primary:hover{
+background:#1e40af;
+}
+
+.btn-outline{
+border:2px solid #2563eb;
+color:#2563eb;
+background:transparent;
+}
+
+.btn-outline:hover{
+background:#2563eb;
+color:white;
+}
+
+/* Features */
+
+.features{
+padding:70px 80px;
+background:#eef2ff;
+}
+
+.features h2{
+text-align:center;
+font-size:32px;
+margin-bottom:50px;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+}
+
+.feature-card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.feature-card h3{
+margin-bottom:10px;
+color:#2563eb;
+}
+
+.feature-card p{
+color:#475569;
+font-size:14px;
+}
+
+/* Footer */
+
+.footer{
+text-align:center;
+padding:25px;
+background:white;
+margin-top:40px;
+color:#64748b;
+}
+
+</style></head><body><!-- Navbar --><div class="navbar"><div class="logo">AI Career Predictor</div><div class="nav-links">
+<a href="/">Home</a>
+<a href="{{ url_for('login') }}">Login</a>
+<a href="{{ url_for('register') }}">Register</a>
+</div></div><!-- Hero --><div class="hero"><div class="hero-text"><h1>Discover Your Future Career With AI</h1><p>
+AI Career Predictor helps students identify the best career path
+based on skills, interests and academic performance.
+</p><div class="hero-buttons"><a href="{{ url_for('register') }}" class="btn btn-primary">Get Started</a>
+
+<a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+
+</div></div><div><img src="https://cdn-icons-png.flaticon.com/512/4712/4712100.png" width="350"></div></div><!-- Features --><div class="features"><h2>Platform Features</h2><div class="feature-grid"><div class="feature-card"><h3>AI Career Prediction</h3>
+<p>Predict the best career using machine learning analysis.</p></div><div class="feature-card"><h3>Career Roadmaps</h3>
+<p>Step-by-step career roadmap with skills and courses.</p></div><div class="feature-card"><h3>Resume Builder</h3>
+<p>Create professional ATS-friendly resumes easily.</p></div><div class="feature-card"><h3>Skill Progress Tracker</h3>
+<p>Track your learning journey and skill improvements.</p></div><div class="feature-card"><h3>Career Test</h3>
+<p>Branch-wise MCQ tests to analyze student strengths.</p></div><div class="feature-card"><h3>LinkedIn Optimization</h3>
+<p>Upload resume and optimize LinkedIn profile.</p></div></div></div><!-- Footer --><div class="footer">© 2026 AI Career Predictor | Student Career Intelligence Platform
+
+</div></body>
+</html>

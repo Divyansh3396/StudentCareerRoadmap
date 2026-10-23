@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Resources</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            margin-top: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .card {
+            background: #f1f1f1;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px;
+            background: blue;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>📚 Learning Resources</h1>
+
+    <!-- STATIC LINKS -->
+    <div class="card">
+        <h3>Python</h3>
+        <a href="https://www.w3schools.com/python/" target="_blank">Learn Python</a>
+    </div>
+
+    <div class="card">
+        <h3>HTML</h3>
+        <a href="https://www.w3schools.com/html/" target="_blank">Learn HTML</a>
+    </div>
+
+    <div class="card">
+        <h3>JavaScript</h3>
+        <a href="https://www.w3schools.com/js/" target="_blank">Learn JavaScript</a>
+    </div>
+
+    <div class="card">
+        <h3>Machine Learning</h3>
+        <a href="https://www.w3schools.com/python/python_ml_getting_started.asp" target="_blank">
+            Learn Machine Learning
+        </a>
+    </div>
+
+    <!-- DYNAMIC LINKS -->
+    {% if resources %}
+        <h2>🔥 Recommended</h2>
+
+        {% for skill, link in resources.items() %}
+            <div class="card">
+                <h3>{{ skill }}</h3>
+                <a href="{{ link }}" target="_blank">Go to {{ skill }}</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <a href="/dashboard" class="btn">Back</a>
+
+</div>
+
+</body>
+</html>

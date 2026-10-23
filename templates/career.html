@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Advisor</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Mermaid.js -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+
+    <style>
+        /* Global Dark Theme */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Card for form */
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            color: #ffffff !important;
+            font-weight: 500;
+        }
+
+        input.form-control,
+        select.form-control {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #444;
+            border-radius: 8px;
+        }
+
+        button.btn-primary {
+            background-color: #1e90ff;
+            color: #ffffff;
+            width: 100%;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        button.btn-primary:hover {
+            background-color: #63b3ed;
+        }
+
+        /* Roadmap Card */
+        .roadmap {
+            background-color: #1f1f1f;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #1e90ff;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .mermaid {
+            text-align: center;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+        .result-title {
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                padding: 15px;
+            }
+
+            button.btn-primary {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <!-- Career Form -->
+        <div class="card">
+            <h2 class="text-center mb-4">AI Career Advisor</h2>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Do you like Coding?</label>
+                    <select name="coding" class="form-control">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Do you like Mathematics?</label>
+                    <select name="math" class="form-control">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Do you like Biology?</label>
+                    <select name="bio" class="form-control">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary">Get Career Suggestion</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Recommended Career -->
+        {% if result %}
+        <div class="roadmap">
+            <h3 class="result-title">Recommended Career: {{ result }}</h3>
+        </div>
+        {% endif %}
+
+        <!-- Career Roadmap Flowchart -->
+        {% if roadmap %}
+        <div class="roadmap">
+            <h4 class="result-title">Career Roadmap</h4>
+            <div class="mermaid">
+                graph TD;
+                {% for i in range(roadmap|length) %}
+                    step{{ i }}["{{ roadmap[i] }}"]{% if i < roadmap|length - 1 %} --> step{{ i + 1 }}{% endif %};
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>

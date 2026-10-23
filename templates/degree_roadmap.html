@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Degree Roadmaps</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+color:white;
+padding:40px;
+}
+
+/* Header */
+.header{
+text-align:center;
+margin-bottom:50px;
+}
+
+.header h1{
+font-size:38px;
+color:#4fd1c5;
+}
+
+.header p{
+color:#cbd5e1;
+margin-top:10px;
+}
+
+/* Grid */
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+/* Card */
+.card{
+background:rgba(255,255,255,0.08);
+padding:25px;
+border-radius:12px;
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+/* Title */
+.card h3{
+color:#00c6ff;
+margin-bottom:10px;
+}
+
+/* List */
+.card ul{
+list-style:none;
+}
+
+.card li{
+margin:6px 0;
+color:#e2e8f0;
+}
+
+/* Button */
+.btn{
+display:inline-block;
+margin-top:40px;
+padding:12px 25px;
+background:#00c6ff;
+color:white;
+border-radius:8px;
+text-decoration:none;
+}
+
+/* Center */
+.center{
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🎓 Degree-Based Career Roadmaps</h1>
+<p>Select your degree and explore career paths</p>
+</div>
+
+<div class="container">
+
+<!-- CSE -->
+<div class="card">
+<h3>💻 Computer Science (CSE)</h3>
+<ul>
+<li>Software Developer</li>
+<li>Web Developer</li>
+<li>AI / ML Engineer</li>
+<li>Data Scientist</li>
+<li>Cybersecurity Analyst</li>
+</ul>
+</div>
+
+<!-- AIML -->
+<div class="card">
+<h3>🤖 AI & Machine Learning</h3>
+<ul>
+<li>Machine Learning Engineer</li>
+<li>Deep Learning Specialist</li>
+<li>Data Analyst</li>
+<li>AI Researcher</li>
+<li>NLP Engineer</li>
+</ul>
+</div>
+
+<!-- IT -->
+<div class="card">
+<h3>🌐 Information Technology</h3>
+<ul>
+<li>System Administrator</li>
+<li>Cloud Engineer</li>
+<li>Network Engineer</li>
+<li>DevOps Engineer</li>
+</ul>
+</div>
+
+<!-- ECE -->
+<div class="card">
+<h3>📡 Electronics & Communication</h3>
+<ul>
+<li>Embedded Systems Engineer</li>
+<li>IoT Developer</li>
+<li>Telecom Engineer</li>
+<li>Hardware Designer</li>
+</ul>
+</div>
+
+<!-- MECH -->
+<div class="card">
+<h3>⚙ Mechanical Engineering</h3>
+<ul>
+<li>Design Engineer</li>
+<li>Automobile Engineer</li>
+<li>Production Engineer</li>
+<li>Robotics Engineer</li>
+</ul>
+</div>
+
+<!-- CIVIL -->
+<div class="card">
+<h3>🏗 Civil Engineering</h3>
+<ul>
+<li>Structural Engineer</li>
+<li>Site Engineer</li>
+<li>Construction Manager</li>
+<li>Urban Planner</li>
+</ul>
+</div>
+
+</div>
+
+<!-- BACK BUTTON -->
+<div class="center">
+<a href="{{ url_for('dashboard') }}" class="btn">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>

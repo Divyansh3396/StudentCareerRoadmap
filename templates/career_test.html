@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Career Test</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(120deg,#141e30,#243b55);
+
+color:white;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+padding:40px;
+
+}
+
+/* Title */
+
+h1{
+
+font-size:36px;
+
+margin-bottom:10px;
+
+color:#4fd1c5;
+
+}
+
+.subtitle{
+
+color:#cbd5e1;
+
+margin-bottom:40px;
+
+}
+
+/* Branch cards */
+
+.branch-container{
+
+display:flex;
+
+gap:30px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+margin-bottom:40px;
+
+}
+
+.branch-card{
+
+background:rgba(255,255,255,0.08);
+
+padding:25px;
+
+border-radius:12px;
+
+width:200px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+.branch-card:hover{
+
+transform:translateY(-5px);
+
+background:rgba(255,255,255,0.15);
+
+}
+
+/* Test container */
+
+.test-container{
+
+max-width:800px;
+
+width:100%;
+
+display:none;
+
+}
+
+.question{
+
+background:rgba(255,255,255,0.08);
+
+padding:20px;
+
+border-radius:10px;
+
+margin-bottom:20px;
+
+}
+
+.options label{
+
+display:block;
+
+margin-top:8px;
+
+cursor:pointer;
+
+}
+
+/* Button */
+
+button{
+
+margin-top:20px;
+
+padding:12px 30px;
+
+border:none;
+
+border-radius:8px;
+
+background:#00c6ff;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#009ad6;
+
+}
+
+/* Result */
+
+.result{
+
+display:none;
+
+margin-top:30px;
+
+background:rgba(255,255,255,0.1);
+
+padding:25px;
+
+border-radius:12px;
+
+text-align:center;
+
+}
+
+</style></head><body><h1>Career Test</h1><p class="subtitle">Choose your branch and answer 10 questions</p><!-- Branch Selection --><div class="branch-container"><div class="branch-card" onclick="startTest('cse')">
+<h3>Computer Science</h3>
+<p>AI / ML / Software</p>
+</div><div class="branch-card" onclick="startTest('ece')">
+<h3>Electronics</h3>
+<p>Embedded / Robotics</p>
+</div><div class="branch-card" onclick="startTest('mech')">
+<h3>Mechanical</h3>
+<p>Design / Manufacturing</p>
+</div><div class="branch-card" onclick="startTest('business')">
+<h3>Business</h3>
+<p>Management / Marketing</p>
+</div></div><!-- Test Questions --><div class="test-container" id="testBox"><form id="quizForm"><div id="questions"></div><button type="submit">Submit Test</button>
+
+</form><div class="result" id="resultBox"></div></div><script>
+
+const questionBank={
+
+cse:[
+
+{q:"Which language is mainly used for AI?",o:["Python","HTML","CSS","SQL"],a:0},
+
+{q:"What is Git used for?",o:["Database","Version Control","AI Training","Hosting"],a:1},
+
+{q:"Which field deals with training models?",o:["Machine Learning","Networking","Cyber law","UI"],a:0},
+
+{q:"Which is frontend technology?",o:["React","Linux","Docker","TensorFlow"],a:0},
+
+{q:"Which database is SQL?",o:["MySQL","MongoDB","Redis","Firebase"],a:0},
+
+{q:"What is API?",o:["Application Interface","App Programming Interface","Application Programming Interface","None"],a:2},
+
+{q:"Which is cloud platform?",o:["AWS","Photoshop","Excel","Blender"],a:0},
+
+{q:"Which structure uses nodes?",o:["Linked List","Array","String","File"],a:0},
+
+{q:"Which language runs in browser?",o:["Python","JavaScript","C++","Java"],a:1},
+
+{q:"AI stands for?",o:["Artificial Intelligence","Auto Interface","App Internet","None"],a:0}
+
+],
+
+ece:[
+
+{q:"Which device stores charge?",o:["Resistor","Capacitor","Diode","Motor"],a:1},
+{q:"Which language used for embedded?",o:["C","HTML","SQL","CSS"],a:0},
+{q:"Arduino is used for?",o:["Robotics","Web","Database","Gaming"],a:0},
+{q:"What measures voltage?",o:["Voltmeter","Thermometer","Speedometer","Altimeter"],a:0},
+{q:"IC stands for?",o:["Integrated Circuit","Internal Cable","Input Chip","None"],a:0},
+{q:"Which signal is continuous?",o:["Analog","Digital","Binary","Logic"],a:0},
+{q:"Robot brain is?",o:["Microcontroller","Motor","Sensor","Wire"],a:0},
+{q:"Which tool used for PCB?",o:["KiCad","Photoshop","Excel","Word"],a:0},
+{q:"Which component amplifies signal?",o:["Transistor","Wire","LED","Switch"],a:0},
+{q:"Sensor detects?",o:["Environment","Sound","Light","All"],a:3}
+
+],
+
+mech:[
+
+{q:"CAD used for?",o:["Design","Coding","Marketing","AI"],a:0},
+{q:"Which law relates force and motion?",o:["Newton Law","Ohm Law","Faraday Law","Hooke Law"],a:0},
+{q:"Engine converts?",o:["Energy","Code","Light","Sound"],a:0},
+{q:"3D printer builds using?",o:["Layers","Air","Light","Code"],a:0},
+{q:"Thermodynamics deals with?",o:["Heat","Light","Sound","Code"],a:0},
+{q:"Which software for design?",o:["SolidWorks","Excel","Photoshop","Chrome"],a:0},
+{q:"Robot arm used in?",o:["Automation","Gaming","Marketing","Education"],a:0},
+{q:"Lathe machine used for?",o:["Cutting","Painting","Welding","Printing"],a:0},
+{q:"Hydraulics uses?",o:["Liquid pressure","Air","Heat","Electric"],a:0},
+{q:"Mechanical engineers design?",o:["Machines","Apps","Websites","Networks"],a:0}
+
+],
+
+business:[
+
+{q:"Marketing means?",o:["Selling ideas","Coding","Manufacturing","Testing"],a:0},
+{q:"Startup needs?",o:["Idea","Code","Engine","Sensor"],a:0},
+{q:"ROI stands for?",o:["Return on Investment","Rate of Internet","Rest of Industry","None"],a:0},
+{q:"Which skill important?",o:["Communication","Coding","Design","Robotics"],a:0},
+{q:"Entrepreneur creates?",o:["Business","Machine","Code","Robot"],a:0},
+{q:"Market research helps?",o:["Understanding customers","Coding","Manufacturing","Testing"],a:0},
+{q:"Branding builds?",o:["Identity","Code","Database","Network"],a:0},
+{q:"Sales increases?",o:["Revenue","Errors","Bugs","Code"],a:0},
+{q:"Leadership means?",o:["Guiding team","Coding","Testing","Design"],a:0},
+{q:"Management organizes?",o:["Resources","Sensors","Motors","Servers"],a:0}
+
+]
+
+};
+
+function startTest(branch){
+
+document.getElementById("testBox").style.display="block";
+
+const qBox=document.getElementById("questions");
+
+qBox.innerHTML="";
+
+questionBank[branch].forEach((item,i)=>{
+
+let html=`<div class="question">
+<p>${i+1}. ${item.q}</p>
+<div class="options">`;
+
+item.o.forEach((opt,j)=>{
+
+html+=`<label>
+<input type="radio" name="q${i}" value="${j}">
+${opt}
+</label>`;
+
+});
+
+html+=`</div></div>`;
+
+qBox.innerHTML+=html;
+
+});
+
+}
+
+document.getElementById("quizForm").onsubmit=function(e){
+
+e.preventDefault();
+
+let score=0;
+
+const answers=questionBank.cse;
+
+answers.forEach((item,i)=>{
+
+const selected=document.querySelector(`input[name="q${i}"]:checked`);
+
+if(selected && selected.value==item.a) score++;
+
+});
+
+document.getElementById("resultBox").style.display="block";
+
+document.getElementById("resultBox").innerHTML=
+
+`<h2>Your Score: ${score}/10</h2>
+<p>Great! Continue building your skills in this field.</p>`;
+
+};
+
+</script></body></html>

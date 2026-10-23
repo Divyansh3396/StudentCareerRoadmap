@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Career Roadmap</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background: #eef2f7;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .feature-card {
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        /* Feature Colors */
+        #career-test {
+            background: #ff6b6b; /* Red */
+        }
+
+        #ai-predictor {
+            background: #4dabf7; /* Blue */
+        }
+
+        #resume-builder {
+            background: #51cf66; /* Green */
+        }
+
+        #linkedin-upload {
+            background: #fcc419; /* Yellow */
+        }
+
+        #roadmap-section {
+            background: #845ef7; /* Purple */
+        }
+
+        /* Option Colors */
+        .feature-card select,
+        .feature-card input[type=text],
+        .feature-card input[type=number] {
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-weight: 500;
+        }
+
+        button.btn-feature {
+            border-radius: 10px;
+            font-weight: 600;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+        }
+
+        h2,
+        h3,
+        h4 {
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media(max-width:576px) {
+            .feature-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <!-- Career Test Feature -->
+        <div class="feature-card" id="career-test">
+            <h2 class="text-center">Career Test</h2>
+            <form method="POST" action="/career">
+                <div class="mb-3">
+                    <label>Do you like Coding?</label>
+                    <select name="coding" class="form-control bg-light text-dark">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Do you like Mathematics?</label>
+                    <select name="math" class="form-control bg-light text-dark">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Do you like Biology?</label>
+                    <select name="bio" class="form-control bg-light text-dark">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-light btn-feature">Get Career Suggestion</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- AI Predictor Feature -->
+        <div class="feature-card" id="ai-predictor">
+            <h2 class="text-center">AI Career Predictor</h2>
+            <form method="POST" action="/predict">
+                <div class="row">
+                    <div class="col-md-2 mb-3">
+                        <label>Tech</label>
+                        <input type="number" name="tech" class="form-control bg-light text-dark" min="0" max="10">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label>Medical</label>
+                        <input type="number" name="medical" class="form-control bg-light text-dark" min="0" max="10">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label>Law</label>
+                        <input type="number" name="law" class="form-control bg-light text-dark" min="0" max="10">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label>Sports</label>
+                        <input type="number" name="sports" class="form-control bg-light text-dark" min="0" max="10">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label>Art</label>
+                        <input type="number" name="art" class="form-control bg-light text-dark" min="0" max="10">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-light btn-feature">Predict Career</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Resume Builder Feature -->
+        <div class="feature-card" id="resume-builder">
+            <h2 class="text-center">Resume Builder</h2>
+            <form method="POST" action="/resume">
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control bg-light text-dark">
+                </div>
+                <div class="mb-3">
+                    <label>Career</label>
+                    <input type="text" name="career" class="form-control bg-light text-dark">
+                </div>
+                <div class="mb-3">
+                    <label>Skills (comma separated)</label>
+                    <input type="text" name="skills" class="form-control bg-light text-dark">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-light btn-feature">Generate Resume</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- LinkedIn Upload Feature -->
+        <div class="feature-card" id="linkedin-upload">
+            <h2 class="text-center">LinkedIn Achievement Upload</h2>
+            <form method="POST" action="/linkedin">
+                <div class="mb-3">
+                    <label>Name</label>
+                    <input type="text" name="name" class="form-control bg-light text-dark">
+                </div>
+                <div class="mb-3">
+                    <label>Career</label>
+                    <input type="text" name="career" class="form-control bg-light text-dark">
+                </div>
+                <div class="mb-3">
+                    <label>Achievement</label>
+                    <input type="text" name="achievement" class="form-control bg-light text-dark">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-light btn-feature">Upload</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Roadmap Feature -->
+        <div class="feature-card" id="roadmap-section">
+    <h2 class="text-center">Career Roadmap</h2>
+    <form method="GET" action="/roadmap">
+        <div class="mb-3">
+            <label>Enter Career Name</label>
+            <input type="text" name="career" class="form-control bg-light text-dark" placeholder="e.g. AI Engineer" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-light btn-feature">Show Roadmap</button>
+        </div>
+    </form>
+</div>   
+</body>
+
+</html>

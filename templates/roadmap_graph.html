@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Career Roadmap</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(120deg,#0f2027,#203a43,#2c5364);
+color:white;
+padding:40px;
+}
+
+/* Header */
+.header{
+text-align:center;
+margin-bottom:60px;
+}
+
+.header h1{
+font-size:40px;
+color:#4fd1c5;
+}
+
+.header p{
+color:#cbd5e1;
+margin-top:10px;
+}
+
+/* Flowchart */
+.flowchart{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:40px;
+}
+
+/* Node */
+.node{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+border-radius:12px;
+padding:25px 30px;
+width:300px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+transition:0.3s;
+}
+
+.node:hover{
+transform:translateY(-5px);
+}
+
+/* Title */
+.node h3{
+color:#00c6ff;
+margin-bottom:10px;
+}
+
+/* List */
+.node ul{
+list-style:none;
+}
+
+.node li{
+margin:6px 0;
+}
+
+/* Connector */
+.connector{
+width:4px;
+height:40px;
+background:#00c6ff;
+}
+
+/* Branch */
+.branch{
+display:flex;
+gap:60px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+/* Small Node */
+.small-node{
+background:rgba(255,255,255,0.06);
+border-radius:10px;
+padding:20px;
+width:220px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.small-node:hover{
+transform:scale(1.05);
+}
+
+.small-node h4{
+color:#4fd1c5;
+margin-bottom:8px;
+}
+
+/* Button */
+.btn{
+display:inline-block;
+margin-top:40px;
+padding:12px 25px;
+background:#00c6ff;
+color:white;
+border-radius:8px;
+text-decoration:none;
+}
+
+/* Responsive */
+@media(max-width:800px){
+.branch{
+flex-direction:column;
+align-items:center;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>Career Roadmap & Skill Tree</h1>
+<p>Follow a structured learning path to become industry ready</p>
+</div>
+
+<div class="flowchart">
+
+<div class="node">
+<h3>Start Learning</h3>
+<ul>
+<li>Programming Fundamentals</li>
+<li>Logic Building</li>
+<li>Problem Solving</li>
+</ul>
+</div>
+
+<div class="connector"></div>
+
+<div class="node">
+<h3>Core Computer Science</h3>
+<ul>
+<li>Data Structures</li>
+<li>Algorithms</li>
+<li>Operating Systems</li>
+<li>Computer Networks</li>
+</ul>
+</div>
+
+<div class="connector"></div>
+
+<div class="branch">
+
+<div class="small-node">
+<h4>Web Development</h4>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+<li>React</li>
+<li>Node.js</li>
+</ul>
+</div>
+
+<div class="small-node">
+<h4>AI / Machine Learning</h4>
+<ul>
+<li>Python</li>
+<li>NumPy</li>
+<li>Pandas</li>
+<li>Machine Learning</li>
+<li>Deep Learning</li>
+</ul>
+</div>
+
+<div class="small-node">
+<h4>Mobile Development</h4>
+<ul>
+<li>Flutter</li>
+<li>React Native</li>
+<li>Android</li>
+<li>UI/UX Basics</li>
+</ul>
+</div>
+
+</div>
+
+<div class="connector"></div>
+
+<div class="node">
+<h3>Advanced Skills</h3>
+<ul>
+<li>Cloud Computing</li>
+<li>System Design</li>
+<li>Cybersecurity</li>
+<li>DevOps</li>
+</ul>
+</div>
+
+<div class="connector"></div>
+
+<div class="node">
+<h3>Career Development</h3>
+<ul>
+<li>Build 5+ Projects</li>
+<li>Portfolio Website</li>
+<li>Open Source</li>
+<li>Internships</li>
+</ul>
+</div>
+
+<div class="connector"></div>
+
+<div class="node">
+<h3>Industry Ready</h3>
+<ul>
+<li>Resume & LinkedIn</li>
+<li>Mock Interviews</li>
+<li>Competitive Coding</li>
+<li>Apply Jobs</li>
+</ul>
+</div>
+
+</div>
+
+<!-- ✅ BACK BUTTON (IMPORTANT FIX) -->
+<div style="text-align:center;">
+<a href="{{ url_for('dashboard') }}" class="btn">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>
